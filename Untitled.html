@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Reset */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 25%;
+            background-color: #fff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .sidebar .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .profile img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .sidebar .profile h2 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .sidebar .profile p {
+            font-size: 1rem;
+            color: #777;
+        }
+
+        .sidebar .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .sidebar .social-icons a {
+            color: #555;
+            font-size: 1.2rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .sidebar .social-icons a:hover {
+            color: #ff9800;
+            transform: scale(1.2);
+        }
+
+        .sidebar .info {
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .sidebar .skills {
+            margin-top: 20px;
+        }
+
+        .sidebar .skills h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .sidebar .skill {
+            margin-bottom: 20px;
+        }
+
+        .sidebar .skill span {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress {
+            height: 8px;
+            background-color: #ff9800;
+            width: 0;
+            animation: fillBar 2s forwards;
+        }
+
+        @keyframes fillBar {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff9800;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e68900;
+            transform: scale(1.1);
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            background-color: #f9f9f9;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .hero h2 span {
+            color: #ff9800;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .hero .btn {
+            margin-top: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: scale(1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hero .btn:hover {
+            transform: scale(1.1);
+            background-color: #ff9800;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .services {
+            margin-top: 40px;
+        }
+
+        .services h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card i {
+            font-size: 2rem;
+            color: #ff9800;
+            margin-bottom: 10px;
+        }
+
+        .card h4 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .partners {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .partners h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .partners-logos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .partners-logos a {
+            display: inline-block;
+        }
+
+        .partners-logos img {
+            max-height: 60px;
+            object-fit: contain;
+        }
+
+        .recommendations {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .recommendations h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .recommendation-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .recommendation-cards .card {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .recommendation-cards .card p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="beya.png" alt="Profile Picture">
+                <h2>Belay Hailu</h2>
+                <p>Software, Security Engineer and Founder</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100092616154910" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/company/naf-infosolutions" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:nafinfo3@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="info">
+                <p><strong>Address:</strong> United States</p>
+            </div>
+            <div class="skills">
+                <h3>Languages</h3>
+                <div class="skill">
+                    <span>English</span>
+                    <div class="progress-bar"><div class="progress"></div></div>
+                </div>
+                <div class="skill">
+                    <span>Amharic</span>
+                    <div class="progress-bar"><div class="progress"></div></div>
+                </div>
+
+                <h3>Skills</h3>
+                <div class="skill">
+                    <span>Developments</span>
+                    <div class="progress-bar"><div class="progress"></div></div>
+                </div>
+                <div class="skill">
+                    <span>Consultation</span>
+                    <div class="progress-bar"><div class="progress"></div></div>
+                </div>
+                <div class="skill">
+                    <span>Trainings</span>
+                    <div class="progress-bar"><div class="progress"></div></div>
+                </div>
+                <div class="skill">
+                    <span>Cyber Security</span>
+                    <div class="progress-bar"><div class="progress"></div></div>
+                </div>
+                <div class="skill">
+                    <span>Software Engineer</span>
+                    <div class="progress-bar"><div class="progress"></div></div>
+                </div>
+            </div>
+            <div class="projects">
+                <h3>Projects</h3>
+                <div class="skill">
+                    <span>Websites (15+)</span>
+                    <div class="progress-bar"><div class="progress"></div></div>
+                </div>
+                <div class="skill">
+                    <span>Graphic Design (100+ Designs)</span>
+                    <div class="progress-bar"><div class="progress"></div></div>
+                </div>
+                <div class="skill">
+                    <span>LOGO (30+ Designs)</span>
+                    <div class="progress-bar"><div class="progress"></div></div>
+                </div>
+                <div class="skill">
+                    <span>Consultations (20+)</span>
+                    <div class="progress-bar"><div class="progress"></div></div>
+                </div>
+                <div class="skill">
+                    <span>Two Batch Cyber Trainings</span>
+                    <div class="progress-bar"><div class="progress"></div></div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> 469-877-7106</p>
+                <p><i class="fas fa-globe"></i> <a href="https://www.nafinfosolutions.com" target="_blank">www.nafinfosolutions.com</a></p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <section class="hero">
+                <h1>I am Belay Hailu</h1>
+                <h2><span>Software, Security Engineer and Founder</span></h2>
+                <p>A place where all digitalization made!</p>
+                <a href="mailto:nafinfo3@gmail.com" class="btn hire-me">Hire Me</a>
+            </section>
+
+            <section class="services">
+                <h3>My Services</h3>
+                <div class="service-cards">
+                    <div class="card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h4>Website and App Development</h4>
+                        <p>Custom Applications, Responsive Websites...</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-palette"></i>
+                        <h4>Graphic Design</h4>
+                        <p>Logos, Branding Materials...</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-users"></i>
+                        <h4>Social Media Management</h4>
+                        <p>Content Strategy, Audience Growth...</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Cyber Security Training</h4>
+                        <p>Network Protection, Ethical Hacking...</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-pencil-ruler"></i>
+                        <h4>UX/UI Design</h4>
+                        <p>Interactive Prototypes, Modern Interfaces...</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>School & Job Consultation</h4>
+                        <p>Career Guidance, Training Programs...</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="partners">
+                <h3>Partners</h3>
+                <div class="partners-logos">
+                    <a href="https://www.nafinfosolutions.com" target="_blank">
+                        <img src="logo.png" alt="NAF InfoSolutions" style="max-height: 80px;">
+                    </a>
+                    <a href="https://www.nafinfosolutions.com" target="_blank">
+                        <img src="photone.png" alt="NAF Cyber Academy" style="max-height: 80px;">
+                    </a>
+                </div>
+            </section>
+
+            <section class="recommendations">
+                <h3>Recommendations</h3>
+                <p>Here’s what people are saying about working with Belay: exceptional expertise, dedicated support, and outstanding results!</p>
+                <div class="recommendation-cards">
+                    <div class="card">
+                        <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                        <h4>Outstanding Support!</h4>
+                        <p>"Working with Belay was a seamless experience. His expertise and dedication ensured success in every project."</p>
+                        <p><strong>Temsegne Animaw</strong><br>Software Engineer</p>
+                    </div>
+                    <div class="card">
+                        <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                        <h4>Exceptional Service!</h4>
+                        <p>"Belay's knowledge in IT and his professionalism were unmatched. Highly recommend his services."</p>
+                        <p><strong>Chidi Flipe</strong><br>Business Consultant</p>
+                    </div>
+                    <div class="card">
+                        <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                        <h4>High Quality Work!</h4>
+                        <p>"Belay delivered exceptional results on time. His solutions exceeded expectations and added real value."</p>
+                        <p><strong>Fred Thomson</strong><br>IT Manager</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+</body>
+</html>
